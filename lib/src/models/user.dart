@@ -17,7 +17,7 @@ class UserMadel{
     'nom': nom,
     "prenom" : prenom,
     'email' : email,
-    'isAdmin' : false,
+    'isAdmin' : isAdmin,
     'estOcupper' :false
 
     };

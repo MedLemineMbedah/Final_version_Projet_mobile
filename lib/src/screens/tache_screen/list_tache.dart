@@ -1,11 +1,10 @@
 import 'dart:io';
-
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:projects3/src/models/project.dart';
 import 'package:projects3/src/models/tache.dart';
 import 'package:projects3/src/screens/controllers/admin_contriller.dart';
 import 'package:projects3/src/screens/controllers/user_controller.dart';
-import 'package:projects3/src/screens/project_screen/Update_project_screen.dart';
 import 'package:projects3/src/screens/project_screen/list_project.dart';
 import 'package:projects3/src/screens/tache_screen/new_tache.dart';
 import 'package:projects3/src/screens/tache_screen/tache_item_builder.dart';
@@ -47,17 +46,17 @@ class ListTache extends StatelessWidget {
         ],
      // leading: IconButton(onPressed: changeScreen(selectedScreen:ListProject.screenName), icon: Icon(Icons.arrow_back)),
       ),
-      body: FutureBuilder<List<Tache>>(
+      body: Provider <Project> ( 
+        create: (context) => project,
+        child:FutureBuilder<List<Tache>>(
         future: TacheDao.getUserTacheNonAffecter(Auth.uid,project.id),
         builder: (context, snapshot) {
           if(snapshot.hasData){
-            if(snapshot.data!.isEmpty) return Center( child: Text('pas de project '),);
+            if(snapshot.data!.isEmpty) return Center( child: Text('pas de tache '),);
              return ListView.builder(
             itemCount: snapshot.data!.length,
            // notifyListeners();
-            itemBuilder: (context,index)=> tachetemBuilder(ontap: changeScreen,tache: snapshot.data![index],));
-          
-          
+            itemBuilder: (context,index)=> tachetemBuilder(ontap: changeScreen,tache: snapshot.data![index]));
           
           }
 
@@ -67,7 +66,7 @@ class ListTache extends StatelessWidget {
          
             
         }
-      ),
+      )),
         floatingActionButton: FloatingActionButton(   
         elevation: 8.0,   
         child: Icon(Icons.add),   

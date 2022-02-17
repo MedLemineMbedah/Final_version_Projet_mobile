@@ -4,8 +4,10 @@ import 'package:projects3/src/app.dart';
 import 'package:projects3/src/daos/auth.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:projects3/src/screens/UserScreen/testAdd.dart';
 
 class LoginScreen extends StatefulWidget {
+  
   const LoginScreen({Key? key}) : super(key: key);
  
   @override
@@ -50,6 +52,15 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children:[
+              ElevatedButton(
+              //  color: Theme.of(context).accentColor,
+                child: Text('register'),
+                onPressed: (){
+                  //  return AddUser();
+                    runApp(new MaterialApp(  debugShowCheckedModeBanner :false,  theme: ThemeData(),
+              darkTheme: ThemeData.dark(),home: new add()));
+                    
+              }),
               ElevatedButton(
               //  color: Theme.of(context).accentColor,
                 child: Text('Connection'),

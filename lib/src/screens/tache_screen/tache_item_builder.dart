@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:projects3/src/daos/tacheDao.dart';
+import 'package:projects3/src/models/project.dart';
 import 'package:projects3/src/models/tache.dart';
 import 'package:projects3/src/screens/ressource_screen/liste_of_ressource_dis.dart';
 import 'package:projects3/src/daos/auth.dart';
 import 'package:projects3/src/daos/resourceDao.dart';
 import 'package:projects3/src/models/resource.dart';
 import 'package:projects3/src/daos/auth.dart';
+import 'package:provider/provider.dart';
+import 'package:projects3/src/screens/project_screen/new_update.dart';
 
 class tachetemBuilder extends StatelessWidget {
-  //static const String screenName = 'listRessource';
+ // static const String screenName = 'tachetemBuilder';
   
   Tache tache;
   Function ontap;
-  tachetemBuilder({ Key? key , required this.tache,required this.ontap }) : super(key: key);
+  
+  tachetemBuilder({ Key? key , required this.tache,required this.ontap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    
     return 
     Dismissible(
   key: ObjectKey(tache.id),
@@ -55,13 +60,14 @@ class tachetemBuilder extends StatelessWidget {
 onDismissed: (direction){
       if(direction == DismissDirection.startToEnd){
         print(tache.id);
-        
+      // {changeScreen(selectedScreen:update_tache.screenName);}
         
       } else if(direction == DismissDirection.endToStart){
         //Scaffold.of(context).showSnackBar(SnackBar(content: Text("Swipe to right")));
         print(tache.id);
         print("supprimer");
-        TacheDao.supprimerTache(Auth.uid,tache.id);
+        
+        TacheDao.supprimerTache(Auth.uid,tache.id,context.read<Project>());
         //ResourceDao.deleteRe(tache.id);
       }
     },
@@ -93,9 +99,13 @@ onDismissed: (direction){
     }
 
 
-    else{
-      print("modifier");
-    }
+    else {
+          onTap:
+          {
+            print(context.read<Project>().titre);
+            //ontap(project: context.read<Project>(),selectedScreen: updateProjet.screenName);
+          }
+        }
   
   
 },

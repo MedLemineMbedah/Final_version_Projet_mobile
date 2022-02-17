@@ -13,6 +13,7 @@ import 'package:projects3/src/screens/project_screen/new_update.dart';
 import 'package:projects3/src/screens/ressource_screen/ressource_item_builder.dart';
 import 'package:projects3/src/screens/tache_screen/new_tache.dart';
 import 'package:projects3/src/screens/tache_screen/list_tache.dart';
+
 import 'package:projects3/src/screens/ressource_screen/liste_of_ressource_dis.dart';
 
 class AdminController extends StatefulWidget {
@@ -69,13 +70,13 @@ class _AdminControllerState extends State<AdminController> {
     case ListTache.screenName : return ListTache(changeScreen: onTapTache ,project: selectedProject!,);
     case CreateProjectScreen.screenName : return CreateProjectScreen(changeScreen: changeScreen ,);
     
-    
     case updateProjet.screenName : return updateProjet(changeScreen: changeScreen ,project: selectedProject!,);
+    //case updateTache.screenName : return updateTache(changeScreen: changeScreen ,project: selectedProject!,);
     
     case AddUser.screenName : return AddUser(changeScreen: changeScreen ,);
    case AddTache.screenName : return AddTache(changeScreen: changeScreen ,project: selectedProject!,);
    
-   case ListRessource.screenName : return ListRessource(changeScreen: onTapProjectonTapRessource ,tache: selectedTache!,);
+   case ListRessource.screenName : return ListRessource(changeScreen: onTapProjectonTapRessource ,tache: selectedTache! ,project: selectedProject!,);
    
       default: return ListProject(changeScreen:onTapProject);
     }

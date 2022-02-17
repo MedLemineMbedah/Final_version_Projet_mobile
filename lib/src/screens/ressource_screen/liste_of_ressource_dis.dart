@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projects3/src/daos/auth.dart';
 import 'package:projects3/src/daos/resourceDao.dart';
 import 'package:projects3/src/daos/tacheDao.dart';
+import 'package:projects3/src/models/project.dart';
 import 'package:projects3/src/models/resource.dart';
 import 'package:projects3/src/models/tache.dart';
 import 'package:projects3/src/screens/UserScreen/AddUser.dart';
@@ -13,8 +14,8 @@ class ListRessource extends StatelessWidget {
   static const String screenName= 'listRessource';
   Tache tache;
   Function changeScreen;
-  
-  ListRessource({ Key? key,required this.changeScreen,required this.tache}) : super(key: key);
+  Project project;
+  ListRessource({ Key? key,required this.changeScreen,required this.tache,required this.project}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +35,10 @@ class ListRessource extends StatelessWidget {
             itemBuilder: (context,index)=>   ListTile(
                                title: Text(snapshot.data![index].nom)  ,
                           onTap: ()  async {
+                                  TacheDao.changeEtat(Auth.uid,  tache.id,project.id);
+                                  TacheDao.addResID(Auth.uid,  tache.id,project.id,snapshot.data![index].id);
                                   ResourceDao.ResourceAuccupe(snapshot.data![index].id);
-                                  Tache t = TacheDao.getUserTache2(Auth.uid, tache.id);
-                                  TacheDao.changeEtat(Auth.uid,  tache.id);
-                                  TacheDao.SaveTacheOfRe(snapshot.data![index].id,t);
+                                  
                                   showDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(

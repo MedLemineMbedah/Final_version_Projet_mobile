@@ -7,12 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:projects3/src/daos/auth.dart';
 import 'package:projects3/src/models/project.dart';
-import 'package:projects3/src/screens/controllers/admin_contriller.dart';
-import 'package:projects3/src/screens/controllers/user_controller.dart';
-import 'package:projects3/src/screens/project_screen/list_project.dart';
 import 'package:projects3/src/daos/project_dao.dart';
-import 'package:projects3/src/screens/tache_screen/AddTache.dart';
-import 'package:projects3/src/screens/tache_screen/list_tache.dart';
 //import 'package:projects3/src/models/project.dart';
 
 class updateProjet extends StatelessWidget {
