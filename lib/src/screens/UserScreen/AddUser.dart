@@ -85,7 +85,7 @@ late String nom,email,prenom;
             decoration:  InputDecoration(
               labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.black87,
+                  color: Colors.white,
                 ),
                  border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -112,7 +112,7 @@ late String nom,email,prenom;
             decoration:  InputDecoration(
                labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.black87,
+                  color: Colors.white,
                 ),
                  border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -137,7 +137,7 @@ late String nom,email,prenom;
              decoration:  InputDecoration(
                labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.black87,
+                  color: Colors.white,
                 ),
                  border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -158,7 +158,7 @@ late String nom,email,prenom;
                 decoration: InputDecoration(
                   labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.black87,
+                  color: Colors.white,
                 ),
                  border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),

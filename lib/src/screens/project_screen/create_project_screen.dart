@@ -136,7 +136,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                               labelStyle: TextStyle(
                     
                   fontSize: 18.0,
-                  color: Colors.black87,
+                  color: Colors.white,
                 ),
                  border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -171,7 +171,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                               labelText: 'DateDebut',
                               labelStyle: TextStyle(
                                 fontSize: 18.0,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -201,7 +201,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                               labelText: 'DateFin',
                               labelStyle: TextStyle(
                                 fontSize: 18.0,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),

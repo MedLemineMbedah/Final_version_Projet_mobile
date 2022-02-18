@@ -62,7 +62,7 @@ class ListRessource extends StatelessWidget {
                         child: 
                         Container(
             padding: EdgeInsets.all(10.0),
-            child:Container(color: Colors.blue[50],
+            child:Container(color: Colors.black45,
              // padding: EdgeInsets.all(10.0),
               child:
                  ListTile(       title: Column( mainAxisAlignment: MainAxisAlignment.start,

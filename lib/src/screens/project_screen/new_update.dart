@@ -153,7 +153,7 @@ class updateProjet extends StatelessWidget {
                               hintText: 'Entrer Title',
                               labelStyle: TextStyle(
                                 fontSize: 18.0,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -191,7 +191,7 @@ class updateProjet extends StatelessWidget {
                               //  hintText: 'Entrer la date',
                               labelStyle: TextStyle(
                                 fontSize: 18.0,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -229,7 +229,7 @@ class updateProjet extends StatelessWidget {
                               //  hintText: 'Entrer la date',
                               labelStyle: TextStyle(
                                 fontSize: 18.0,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
