@@ -25,7 +25,7 @@ class CreateProjectScreen extends StatefulWidget {
 
 class _CreateProjectScreenState extends State<CreateProjectScreen> {
   TextEditingController _title = TextEditingController(text: ' ');
-
+  late String titre;
   final _formKey = GlobalKey<FormState>();
 
   DateTime _dat1 = DateTime.now();
@@ -39,7 +39,20 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
   final DateFormat _dateFormatter =
       DateFormat('yyyy-MM-dd hh:mm'); //DateFormat();
 
-  
+  // @override
+  // void initState() {
+  //   super.initState();
+
+  //   _dat1Controller.text = _dateFormatter.format(_dat1);
+  //   _dat2Controller.text = _dateFormatter.format(_dat2);
+  // }
+
+  // @override
+  // void dispose() {
+  //   _dat1Controller.dispose();
+  //   _dat2Controller.dispose();
+  //   super.dispose();
+  // }
 
   _handleDateDebutPicker() async {
     final DateTime? date = await showDatePicker(
@@ -73,124 +86,130 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
-        appBar: AppBar(
+    return Scaffold(
+      appBar: AppBar(
           title: Text('create Project'),
           // to return to  ListProject screen
           // leading: IconButton(onPressed: ()=> changeScreen(selectedScreen:ListTache.screenName),icon: Icon(Icons.arrow_back)),
           leading: IconButton(
-                onPressed: () => Auth.loguOut(), icon: Icon(Icons.arrow_back))
-            // backgroundColor: Colors.blue,
-            
+              onPressed: () => Auth.loguOut(), icon: Icon(Icons.arrow_back))
           // backgroundColor: Colors.blue,
-        ),
-        body: GestureDetector(
-          onTap: () {},
-          child: SingleChildScrollView(
-            child: SafeArea(
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 10.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                   
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        
-                        children: [
-                          Padding(
+
+          // backgroundColor: Colors.blue,
+          ),
+      body: GestureDetector(
+        onTap: () {},
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                 
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        Padding(
                            padding: EdgeInsets.symmetric(
                             vertical: 10.0,
-                          ),    child:
-                         TextFormField(
-                           
-                           //readOnly: false,
-              
+                          ),
+                          child: TextFormField(
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter some text';
                               }
 
-                             // titre = value;
+                              titre = value;
                             },
-                            
-                            //  keyboardType: TextInputType.text,
-                          
-                              decoration: InputDecoration(
-                               labelText: 'Titre',
-                              hintText: 'Entrer le titre',
+                            // readOnly: true,
+                            // controller: _title,
+                            keyboardType: TextInputType.text,
+                            style: TextStyle(
+                              fontSize: 18.0,
+                            ),
+                            decoration: InputDecoration(
+                              labelStyle: TextStyle(
+                    
+                  fontSize: 18.0,
+                  color: Colors.black87,
+                ),
+                 border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              labelText: 'Nom',
+                              hintText: 'Entrer votre nom',
                               // hintText: 'Nom'
+                            ),
+                          ),
+                        ),
+
+                        // date debut
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please provide a value.';
+                              }
+                              return null;
+                            },
+                            readOnly: true,
+                            controller: _dat1Controller,
+                            onTap: _handleDateDebutPicker,
+                            style: TextStyle(
+                              fontSize: 18.0,
+                            ),
+                            decoration: InputDecoration(
+                              
+                              labelText: 'DateDebut',
                               labelStyle: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.black87,
-                                ),
+                              ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                                // hintText: 'Nom'
-                              ),
-                              controller: _title,
                             ),
                           ),
-
-                          // date debut
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 10.0,
+                        ),
+                        // date fin
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please provide a value.';
+                              }
+                              return null;
+                            },
+                            // readOnly: true,
+                            controller: _dat2Controller,
+                            onTap: _handleDateFinPicker,
+                            style: TextStyle(
+                              fontSize: 18.0,
                             ),
-                            child: TextFormField(
-                              readOnly: true,
-                              controller: _dat1Controller,
-                              onTap: _handleDateDebutPicker,
-                              style: TextStyle(
-                                fontSize: 18.0,
-                              ),
-                              decoration: InputDecoration(
-                                 hintText: 'DateDebut',
-                              labelText: 'DateDebut',
-                              //helperText: 'selectionner le date',
+                            decoration: InputDecoration(
+                              labelText: 'DateFin',
                               labelStyle: TextStyle(
                                 fontSize: 18.0,
-                                color: Colors.black54,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
+                                color: Colors.black87,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
                           ),
-                          // date fin
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 10.0,
-                            ),
-                            child: TextFormField(
-                              readOnly: true,
-                              controller: _dat2Controller,
-                              onTap: _handleDateFinPicker,
-                              style: TextStyle(
-                                fontSize: 18.0,
-                              ),
-                              decoration: InputDecoration(
-                                labelText: 'DateFin',
-                                  hintText: 'DateFin',
-                             
-                              //helperText: 'selectionner le date',
-                              labelStyle: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.black54,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                              ),
-                            ),
-                          ),
-               Container(
+                        ),
+                        Container(
                           margin: EdgeInsets.symmetric(vertical: 20.0),
                           height: 60.0,
                    //       width: double.infinity,
@@ -198,10 +217,8 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.circular(40.0),
                           ),
-                
-                
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
+                          child: ElevatedButton(
+                           style: ElevatedButton.styleFrom(
               primary: Colors.blue,
               fixedSize: const Size(300, 100),
               textStyle: const TextStyle(
@@ -213,10 +230,15 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                   )
                   
                   ),
-                
+                            onPressed: () async {
+                              if (_dat2.isAfter(_dat1)) {
+                                // if (_formKey.currentState!.validate()) {
 
-                              onPressed: () async {
-                                
+                                final isValid =
+                                    _formKey.currentState!.validate();
+                                if (!isValid) {
+                                  return;
+                                }
                                 ProjectDao.SaveProject(
                                     Auth.uid,
                                     Project(
@@ -224,7 +246,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                                             _dat1Controller.text),
                                         dateFin: DateTime.parse(
                                             _dat2Controller.text),
-                                        titre: _title.text));
+                                        titre: titre));
                                 showDialog(
                                   context: context,
                                   builder: (context) => AlertDialog(
@@ -239,27 +261,43 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                                     ],
                                   ),
                                 );
-                              },
-                              child: Text(
-                                btnText.toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title: Text('Result'),
+                                    content: Text(
+                                        'date Fin ne peut pas etre avant date debut !!'),
+                                    actions: [
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text('Ok'))
+                                    ],
+                                  ),
+                                );
+                              }
+                            },
+                            child: Text(
+                              btnText.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
           ),
         ),
-      )
-    ;
+      ),
+    );
   }
 }

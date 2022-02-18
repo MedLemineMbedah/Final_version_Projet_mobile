@@ -14,6 +14,9 @@ class UserDao{
   static Future<void> saveUser( String uid,UserMadel user) async{
     await  _usersCollection.doc(uid).set(user.asMap());
   }
+  static Future<void> deleteUser( String uid) async{
+    await  _usersCollection.doc(uid).delete();
+  }
 
    static Future<void> saveUser1(UserMadel user) async{
     await  _usersCollection.add(user.asMap());

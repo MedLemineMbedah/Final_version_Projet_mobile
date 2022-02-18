@@ -97,13 +97,22 @@ class TacheDao {
 
   //Get tache terminer
    static Future<List<Tache>> getUserTacheTerminer() async {
-    QuerySnapshot query = await FirebaseFirestore.instance
-        .collection(UserDao.colName)
-        .doc('Ajd6QYvkVLeZ3DZSL9mqqvOcVCA2')
-        .collection(colName)
-        .where('terminer', isEqualTo: true)
-        .get();
+    // QuerySnapshot query = await FirebaseFirestore.instance
+    //     .collection(UserDao.colName)
+    //     .doc('Ajd6QYvkVLeZ3DZSL9mqqvOcVCA2')
+    //     .collection(colName)
+    //     .where('terminer', isEqualTo: true)
+    //     .get();
+     QuerySnapshot query;
+    
+       query = await  FirebaseFirestore.instance.collectionGroup("tache").where('terminer',isEqualTo: true).get();
+    
+    
+    //  return query.docs.map((e){
+    //    return Tache.fromQueryDocumentSnapshot(e);
+    //  }).toList();
     return query.docs.map(Tache.fromQueryDocumentSnapshot).toList();
+   // return query.docs.map(Tache.fromQueryDocumentSnapshot).toList();
   }
 
   //Save tache for ressource
@@ -127,15 +136,19 @@ class TacheDao {
         .update(occupation);
   }
 
-   static Future<void> changeTermin(String uid, String idT) async {
-    Map<String, dynamic> terminer = {"terminer": false};
+   static Future<void> changeTermin(String uid, String name) async {
+    Map<String, dynamic> terminer = {"terminer": true};
     
-    await FirebaseFirestore.instance
-        .collection(UserDao.colName)
-        .doc(uid)
-        .collection(TacheDao.colName)
-        .doc(idT)
-        .update(terminer);
+    // await FirebaseFirestore.instance
+    //     .collection(UserDao.colName)
+    //     .doc(uid)
+    //     .collection(TacheDao.colName)
+    //     .doc(idT)
+    //     .update(terminer);
+    await FirebaseFirestore.instance.collectionGroup("tache").where('titre',isEqualTo: name).get().then((value) => {
+       
+       value.docs.first.reference.update(terminer)
+     });
         
   }
 

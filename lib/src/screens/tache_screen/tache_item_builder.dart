@@ -21,8 +21,7 @@ class tachetemBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return 
-    Dismissible(
+    return Dismissible(
   key: ObjectKey(tache.id),
     background: Container(
       alignment: Alignment.centerLeft,
@@ -102,8 +101,9 @@ onDismissed: (direction){
     else {
           onTap:
           {
-            print(context.read<Project>().titre);
-            //ontap(project: context.read<Project>(),selectedScreen: updateProjet.screenName);
+          //  print(context.read<Project>().titre);
+          //  ontap(project: context.read<Project>(),selectedScreen: updateProjet.screenName);
+             ontap(project: context.read<Project>(), selectedScreen: updateProjet.screenName);
           }
         }
   
