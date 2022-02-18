@@ -15,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   var key = GlobalKey();
-  TextEditingController _email = TextEditingController(text: 'a@b.com'),
+  TextEditingController _email = TextEditingController(text: 'med.lemine.mbedah@gmail.com'),
       _password = TextEditingController(text: '12345678');
 
   // final auth = FirebaseAuth.instance;
@@ -107,6 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(50))),
                   child: Text('Connection'),
                   onPressed: () {
+                    
                     Auth.signIn(_email.text, _password.text);
                   },
                 )),

@@ -38,7 +38,7 @@ class ListTache extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('les Taches 11'), 
+      appBar: AppBar(title: Text("Les taches de: ${project.titre}"),
        leading: IconButton(onPressed: ()=> changeScreen(selectedScreen:ListProject.screenName),icon: Icon(Icons.arrow_back)),
        actions: [
           IconButton(onPressed: ()=> Auth.loguOut(), icon: Icon(Icons.logout)),
@@ -52,7 +52,7 @@ class ListTache extends StatelessWidget {
         future: TacheDao.getUserTacheNonAffecter(Auth.uid,project.id),
         builder: (context, snapshot) {
           if(snapshot.hasData){
-            if(snapshot.data!.isEmpty) return Center( child: Text('pas de tache '),);
+            if(snapshot.data!.isEmpty) return Center( child: Text('vide'),);
              return ListView.builder(
             itemCount: snapshot.data!.length,
            // notifyListeners();

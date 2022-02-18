@@ -16,7 +16,7 @@ class ListProject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('les Projet'),
+      appBar: AppBar(title: Text('Les Projets'),
         actions: [
           IconButton(onPressed: ()=>showDialog(
                                   context: context,
@@ -69,7 +69,7 @@ class ListProject extends StatelessWidget {
         future: ProjectDao.getUserProject(Auth.uid),
         builder: (context, snapshot) {
           if(snapshot.hasData){
-            if(snapshot.data!.isEmpty) return Center( child: Text('pas de project '),);
+            if(snapshot.data!.isEmpty) return Center( child: Text('Vide '),);
              return ListView.builder(
             itemCount: snapshot.data!.length,
             itemBuilder: (context,index)=> ProjectItemBuilder(ontap: changeScreen,project: snapshot.data![index],));

@@ -27,7 +27,7 @@ class ListRessource extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('les Ressources disponibles'),
+        title: Text('Les Ressources'),
         leading: IconButton(
             onPressed: () => changeScreen(selectedScreen: ListTache.screenName),
             icon: Icon(Icons.arrow_back)),
@@ -41,7 +41,7 @@ class ListRessource extends StatelessWidget {
             if (snapshot.hasData) {
               if (snapshot.data!.isEmpty)
                 return Center(
-                  child: Text('pas de Ressource '),
+                  child: Text('pas de Ressource disponible'),
                 );
               return ListView.builder(
                   itemCount: snapshot.data!.length,
