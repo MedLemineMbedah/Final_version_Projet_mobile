@@ -121,9 +121,7 @@ class updateProjet extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 20,
-                    ),
+                   
                     // Center(
                     //   child: Text(
                     //     titleText,
@@ -134,14 +132,16 @@ class updateProjet extends StatelessWidget {
                     //     ),
                     //   ),
                     // ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
+                   
         Form(
               key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                   Padding(
+                           padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),    child:
                   TextFormField(
 
               // The validator receives the text that the user has entered.
@@ -164,9 +164,18 @@ class updateProjet extends StatelessWidget {
                 hintText: 'Entrer Title',
                 labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.white,
+                  color: Colors.black87,
                 ),
-              )),
+                 border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+              )
+              ),),
+              Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10.0,
+                            ),
+                            child: 
                TextFormField(
              // keyboardType: TextInputType.number,
              readOnly: true,
@@ -189,17 +198,23 @@ class updateProjet extends StatelessWidget {
 
               decoration:  InputDecoration(
                 labelText: project.dateDedut.toString(),
-              //  hintText: 'Entrer la date',
+                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                hintText: 'Entrer la date',
                 labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.white,
+                  color: Colors.black87,
                 ),
-              )),
+              )),),
           TextFormField(
              // keyboardType: TextInputType.number,
              readOnly: true,
             controller: _dat2Controller,
             onTap: _handleDateFinPicker,
+            style: TextStyle(
+                                fontSize: 18.0,
+                              ),
               // The validator receives the text that the user has entered.
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -217,11 +232,15 @@ class updateProjet extends StatelessWidget {
 
               decoration:  InputDecoration(
                 labelText: project.dateFin.toString(),
+                hintText: 'Entrer la date',
               //  hintText: 'Entrer la date',
                 labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.white,
+                  color: Colors.black87,
                 ),
+                 border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
               )),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),

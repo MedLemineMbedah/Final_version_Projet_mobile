@@ -48,11 +48,26 @@ late String nom,email,prenom;
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
-    return Form(
+    return 
+    SingleChildScrollView(
+            child: SafeArea(
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                  vertical: 10.0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+    Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Padding(
+                           padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),    child:
           TextFormField(
             
             // The validator receives the text that the user has entered.
@@ -70,7 +85,7 @@ late String nom,email,prenom;
     hintText: 'Entrer votre nom',
               )
             
-          ),
+          ),),
           TextFormField(
             // The validator receives the text that the user has entered.
             validator: (value) {
@@ -79,10 +94,17 @@ late String nom,email,prenom;
               }
               prenom=value;
             },
-            decoration: const InputDecoration(
-    border: OutlineInputBorder(),
+            decoration:  InputDecoration(
+   // border: OutlineInputBorder(),
     labelText:'prenom',
     hintText: 'Entrer votre prenom',
+     labelStyle: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.black87,
+                ),
+                 border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
               )
           ),
           TextFormField(
@@ -145,6 +167,11 @@ late String nom,email,prenom;
           ),
         ],
       ),
+    )
+                  ]
+                )
+                )
+                )
     );
   }
 }

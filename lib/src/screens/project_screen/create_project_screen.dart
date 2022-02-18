@@ -39,20 +39,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
   final DateFormat _dateFormatter =
       DateFormat('yyyy-MM-dd hh:mm'); //DateFormat();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   _dat1Controller.text = _dateFormatter.format(_dat1);
-  //   _dat2Controller.text = _dateFormatter.format(_dat2);
-  // }
-
-  // @override
-  // void dispose() {
-  //   _dat1Controller.dispose();
-  //   _dat2Controller.dispose();
-  //   super.dispose();
-  // }
+  
 
   _handleDateDebutPicker() async {
     final DateTime? date = await showDatePicker(
@@ -109,35 +96,41 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    // Center(
-                    //   child: Text(
-                    //     titleText,
-                    //     style: TextStyle(
-                    //       color: Colors.lightBlueAccent.shade200,
-                    //       fontSize: 20.0,
-                    //       fontWeight: FontWeight.bold,
-                    //     ),
-                    //   ),
-                    // ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
+                   
                     Form(
                       key: _formKey,
                       child: Column(
+                        
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextField(
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Nom',
-                                hintText: 'Entrer votre nom',
+                           padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),    child:
+                         TextFormField(
+                           
+                           //readOnly: false,
+              
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
 
+                             // titre = value;
+                            },
+                            
+                            //  keyboardType: TextInputType.text,
+                          
+                              decoration: InputDecoration(
+                               labelText: 'Titre',
+                              hintText: 'Entrer le titre',
+                              // hintText: 'Nom'
+                              labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.black87,
+                                ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
                                 // hintText: 'Nom'
                               ),
                               controller: _title,
@@ -157,10 +150,12 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                                 fontSize: 18.0,
                               ),
                               decoration: InputDecoration(
-                                labelText: 'DateDebut',
-                                labelStyle: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Colors.white,
+                                 hintText: 'DateDebut',
+                              labelText: 'DateDebut',
+                              //helperText: 'selectionner le date',
+                              labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.black54,
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -182,9 +177,12 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                               ),
                               decoration: InputDecoration(
                                 labelText: 'DateFin',
-                                labelStyle: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Colors.white,
+                                  hintText: 'DateFin',
+                             
+                              //helperText: 'selectionner le date',
+                              labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.black54,
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -192,16 +190,33 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                               ),
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 20.0),
-                            height: 60.0,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(40.0),
-                            ),
-                            child: ElevatedButton(
+               Container(
+                          margin: EdgeInsets.symmetric(vertical: 20.0),
+                          height: 60.0,
+                   //       width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            borderRadius: BorderRadius.circular(40.0),
+                          ),
+                
+                
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              fixedSize: const Size(300, 100),
+              textStyle: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 20,
+                    ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50)
+                  )
+                  
+                  ),
+                
+
                               onPressed: () async {
+                                
                                 ProjectDao.SaveProject(
                                     Auth.uid,
                                     Project(
