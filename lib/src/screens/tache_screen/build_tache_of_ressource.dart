@@ -48,30 +48,44 @@ class ListTache_of_project extends StatelessWidget {
              
               ListView.builder(
             itemCount: snapshot.data!.length,
-            itemBuilder: (context,index)=> 
-            
-            ListTile(
-              leading: Checkbox(
-          activeColor: Colors.blueAccent,
-          value: snapshot.data![index].teminer,
-          onChanged: (checkbox) {
-            TacheDao.changeTermin(Auth.uid,snapshot.data![index].id);
+            itemBuilder: (context,index)=> builItem(tache:snapshot.data![index]),
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        //     ListTile(
+        //       leading: Checkbox(
+        //   activeColor: Colors.blueAccent,
+        //   value: snapshot.data![index].teminer,
+        //   onChanged: (checkbox) async{
+        //     TacheDao.changeTermin(Auth.uid,snapshot.data![index].titre);
+
             
            
             
-          },
-        ),
-                        title: Text(snapshot.data![index].titre,style: TextStyle(
-            decoration:
-                snapshot.data![index].teminer ? TextDecoration.lineThrough : TextDecoration.none,
-          ),)  ,
-                        subtitle: Text(
-                          "duree: ${snapshot.data![index].duree.toString()}"
-                          ),
-                        onTap: (){
-                        //  ontap(project: tache,selectedScreen:ListTache.screenName);
-                        },
-                      )
+        //   },
+        // ),
+        //                 title: Text(snapshot.data![index].titre,style: TextStyle (
+        //     decoration:
+        //         snapshot.data![index].teminer ? TextDecoration.lineThrough : TextDecoration.none,
+        //   ),)  ,
+        //                 subtitle: Text(
+        //                   "duree: ${snapshot.data![index].duree.toString()}"
+        //                   ),
+        //                 onTap: (){
+        //                 //  ontap(project: tache,selectedScreen:ListTache.screenName);
+        //                 },
+        //               )
             
             
           
@@ -105,3 +119,48 @@ class ListTache_of_project extends StatelessWidget {
 
    
   }
+ class builItem extends StatefulWidget {
+
+   Tache tache;
+  builItem({ Key? key ,required this.tache}) : super(key: key);
+   @override
+   _builItemState createState() => _builItemState();
+ }
+ 
+ class _builItemState extends State<builItem> {
+   late bool val;
+   @override
+  void initState() {
+    // TODO: implement initState
+    val=widget.tache.teminer;
+    super.initState();
+  }
+  
+   @override
+   Widget build(BuildContext context) {
+     return Container(
+        child:ListTile(
+              leading: Checkbox(
+          activeColor: Colors.blueAccent,
+          value: val,
+          onChanged: (v) async{
+            TacheDao.changeTermin(Auth.uid,widget.tache.titre);
+            setState(() {
+              val=v!;
+            });
+          },
+        ),
+                        title: Text(widget.tache.titre,style: TextStyle (
+            decoration:
+                widget.tache.teminer ? TextDecoration.lineThrough : TextDecoration.none,
+          ),)  ,
+                        subtitle: Text(
+                          "duree: ${widget.tache.duree.toString()}"
+                          ),
+                        onTap: (){
+                        //  ontap(project: tache,selectedScreen:ListTache.screenName);
+                        },
+                      )
+     );
+   }
+ }
