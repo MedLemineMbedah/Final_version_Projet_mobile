@@ -30,7 +30,9 @@ class ListProject extends StatelessWidget {
                                           return ListView.builder(
                                           itemCount: snapshot.data!.length,
                                         // notifyListeners();
-                                          itemBuilder: (context,index)=>  ListTile(
+                                          itemBuilder: (context,index)=> 
+                                            ListTile(
+                                             tileColor : Colors.deepOrange,
                                                         title: Text(snapshot.data![index].titre)  ,
                                                         subtitle: Text(
                                                           "duree: ${snapshot.data![index].duree.toString()}"
@@ -38,6 +40,10 @@ class ListProject extends StatelessWidget {
                                                   
                                                       )
                                             );
+                                            
+                                            
+                                          
+
                                             }
 
                                         else{

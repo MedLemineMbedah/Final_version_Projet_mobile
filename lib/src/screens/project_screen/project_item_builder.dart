@@ -33,13 +33,29 @@ class ProjectItemBuilder extends StatelessWidget {
         color: Colors.redAccent,
         child: Icon(Icons.delete, color: Colors.white),
       ),
-      child: ListTile(
-        title: Text(project.titre),
-        subtitle: Text("date fin: ${project.dateFin.toString()}"),
-        trailing: Text(project.dateDedut.toString()),
+      child: 
+      Container(
+            padding: EdgeInsets.all(10.0),
+            child:Container(color: Colors.blue[50],
+             // padding: EdgeInsets.all(10.0),
+              child:
+      ListTile(
+        title: Column( mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Text("Nom  : ${project.titre}",style:TextStyle(fontSize: 20) ),Text("date debut   : ${project.dateDedut.toString()}",style:TextStyle(fontSize: 20)),Text("date fin   : ${project.dateFin.toString()}",style:TextStyle(fontSize: 20)),],
+        ),
+        // subtitle:Column(
+        //   children: [],
+        // ), 
+        
+        // trailing: Column(
+        //   children: [],
+        // ), 
         onTap: () {
           ontap(project: project, selectedScreen: ListTache.screenName);
         },
+      ),
+      )
       ),
       key: ObjectKey(project.id),
       onDismissed: (direction) {

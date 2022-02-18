@@ -32,7 +32,7 @@ class AddTache extends StatelessWidget {
   TextEditingController _title = TextEditingController(text: "");
    int duree= 1 ;
   late String titre;
-   String btnText = 'Ajouter tache';
+   String btnText = 'Ajouter';
 
   final _formKey = GlobalKey<FormState>();
 

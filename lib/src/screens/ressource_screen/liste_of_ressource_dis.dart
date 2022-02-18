@@ -59,8 +59,19 @@ class ListRessource extends StatelessWidget {
                           color: Colors.redAccent,
                           child: Icon(Icons.delete, color: Colors.white),
                         ),
-                        child: ListTile(
-                          title: Text(snapshot.data![index].nom),
+                        child: 
+                        Container(
+            padding: EdgeInsets.all(10.0),
+            child:Container(color: Colors.blue[50],
+             // padding: EdgeInsets.all(10.0),
+              child:
+                 ListTile(       title: Column( mainAxisAlignment: MainAxisAlignment.start,
+       crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Icon(Icons.account_circle),Text("Nom  : ${snapshot.data![index].nom}",style:TextStyle(fontSize: 20)) ] ,
+      
+      ),
+                        
+                        
                           onTap: () async {
                             TacheDao.changeEtat(Auth.uid, tache.id, project.id);
                             TacheDao.addResID(Auth.uid, tache.id, project.id,
@@ -87,6 +98,7 @@ class ListRessource extends StatelessWidget {
                             //  ontap(project: project,selectedScreen:ListTache.screenName);
                           },
                         ),
+            )),
                         onDismissed: (direction) {
                            if (direction == DismissDirection.startToEnd) {
                           // //  print(project.id);

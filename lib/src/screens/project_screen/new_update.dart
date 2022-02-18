@@ -301,7 +301,8 @@ class updateProjet extends StatelessWidget {
                                             onPressed: () {
                                               Navigator.pop(context);
                                             },
-                                            child: Text('Ok'))
+                                            child: Text('Ok')
+                                            )
                                       ],
                                     ),
                                   );

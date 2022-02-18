@@ -38,23 +38,27 @@ class tachetemBuilder extends StatelessWidget {
     child:
     
     
-    
+     Container(
+            padding: EdgeInsets.all(10.0),
+            child:Container(color: Colors.blue[50],
+             // padding: EdgeInsets.all(10.0),
+              child:
     
     
     
     
     ListTile(
-      title: Text(tache.titre)  ,
-      subtitle: Text(
-        "duree: ${tache.duree.toString()}"
-        ),
-        
+      title: Column( mainAxisAlignment: MainAxisAlignment.start,
+       crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Text("Nom  : ${tache.titre}",style:TextStyle(fontSize: 20)),Text("duree  : ${tache.duree.toString()}",style:TextStyle(fontSize: 20)) ] ,
+      
+      ),
       onTap: (){  
          ontap(tache: tache,selectedScreen:ListRessource.screenName); 
          
           },//end onTap
     ),
-
+            ),),
     
 onDismissed: (direction){
       if(direction == DismissDirection.startToEnd){
