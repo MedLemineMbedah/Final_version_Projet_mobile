@@ -20,7 +20,7 @@ class updateProjet extends StatelessWidget {
   updateProjet({Key? key, required this.changeScreen, required this.project})
       : super(key: key);
 
- // TextEditingController _title = TextEditingController(text: "");
+  // TextEditingController _title = TextEditingController(text: "");
   late String _title;
   late int duree;
   final _formKey = GlobalKey<FormState>();
@@ -100,175 +100,194 @@ class updateProjet extends StatelessWidget {
       }
     }
 
-   return Scaffold(
-        appBar: AppBar(
-            title: Text('Update Project'),
-            // to return to  ListProject screen
-            // leading: IconButton(onPressed: ()=> changeScreen(selectedScreen:ListTache.screenName),icon: Icon(Icons.arrow_back)),
-            leading: IconButton(
-                onPressed: () => Auth.loguOut(), icon: Icon(Icons.arrow_back))
-            // backgroundColor: Colors.blue,
-            ),
-        body: GestureDetector(
-          onTap: () {},
-          child: SingleChildScrollView(
-            child: SafeArea(
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 10.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    // Center(
-                    //   child: Text(
-                    //     titleText,
-                    //     style: TextStyle(
-                    //       color: Colors.lightBlueAccent.shade200,
-                    //       fontSize: 20.0,
-                    //       fontWeight: FontWeight.bold,
-                    //     ),
-                    //   ),
-                    // ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-        Form(
-              key: _formKey,
+    return Scaffold(
+      appBar: AppBar(
+          title: Text('Update Project'),
+          // to return to  ListProject screen
+          // leading: IconButton(onPressed: ()=> changeScreen(selectedScreen:ListTache.screenName),icon: Icon(Icons.arrow_back)),
+          leading: IconButton(
+              onPressed: () => Auth.loguOut(), icon: Icon(Icons.arrow_back))
+          // backgroundColor: Colors.blue,
+          ),
+      body: GestureDetector(
+        onTap: () {},
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextFormField(
+                  SizedBox(
+                    height: 20,
+                  ),
+                  // Center(
+                  //   child: Text(
+                  //     titleText,
+                  //     style: TextStyle(
+                  //       color: Colors.lightBlueAccent.shade200,
+                  //       fontSize: 20.0,
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextFormField(
 
-              // The validator receives the text that the user has entered.
-                validator: (value) {
-                if (value == null || value.isEmpty) {
-                  _title= project.titre;
-                }
-                else{
-                _title = value;
-                }
-              },
-              // decoration: const InputDecoration(
-              //   border: OutlineInputBorder(),
-              //   labelText: 'Title',
-              //   hintText: 'Entrer Title',
-              // )),
-
-              decoration:  InputDecoration(
-                labelText: project.titre,
-                hintText: 'Entrer Title',
-                labelStyle: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
-                ),
-              )),
-               TextFormField(
-             // keyboardType: TextInputType.number,
-             readOnly: true,
-            controller: _dat1Controller,
-            onTap: _handleDateFinPicker,
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  _dat1Controller.text =project.dateDedut.toString();
-                }
-
-               else  _dat1Controller.text = value.toString();
-              },
-              // decoration: const InputDecoration(
-              //   border: OutlineInputBorder(),
-              //   labelText: 'duree',
-              //   hintText: 'Entrer la duree',
-              // )
-              // ),
-
-              decoration:  InputDecoration(
-                labelText: project.dateDedut.toString(),
-              //  hintText: 'Entrer la date',
-                labelStyle: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
-                ),
-              )),
-          TextFormField(
-             // keyboardType: TextInputType.number,
-             readOnly: true,
-            controller: _dat2Controller,
-            onTap: _handleDateFinPicker,
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  _dat2Controller.text =project.dateFin.toString();
-                }
-
-               else  _dat2Controller.text = value.toString();
-              },
-              // decoration: const InputDecoration(
-              //   border: OutlineInputBorder(),
-              //   labelText: 'duree',
-              //   hintText: 'Entrer la duree',
-              // )
-              // ),
-
-              decoration:  InputDecoration(
-                labelText: project.dateFin.toString(),
-              //  hintText: 'Entrer la date',
-                labelStyle: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
-                ),
-              )),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Validate returns true if the form is valid, or false otherwise.
-                if (_formKey.currentState!.validate()) {
-                //  Tache t = Tache(duree: duree, titre: titre);
-                      ProjectDao.UpdateProject(
-                                    Auth.uid,
-                                    project.id,
-                                    Project(
-                                        dateDedut: DateTime.parse(
-                                            _dat1Controller.text),
-                                        dateFin:DateTime.parse(
-                                            _dat2Controller.text),
-                                        titre: _title));
-                // TacheDao.SaveTache(Auth.uid, , t);
-
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: Text('Result'),
-                      content: Text('modification avec succes'),
-                      actions: [
-                        ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
+                            // The validator receives the text that the user has entered.
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                _title = project.titre;
+                              } else {
+                                _title = value;
+                              }
                             },
-                            child: Text('Ok'))
+                            // decoration: const InputDecoration(
+                            //   border: OutlineInputBorder(),
+                            //   labelText: 'Title',
+                            //   hintText: 'Entrer Title',
+                            // )),
+
+                            decoration: InputDecoration(
+                              labelText: project.titre,
+                              hintText: 'Entrer Title',
+                              labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.white,
+                              ),
+                            )),
+                        TextFormField(
+                            // keyboardType: TextInputType.number,
+                            readOnly: true,
+                            controller: _dat1Controller,
+                            onTap: _handleDateFinPicker,
+                            // The validator receives the text that the user has entered.
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                _dat1Controller.text =
+                                    project.dateDedut.toString();
+                              } else
+                                _dat1Controller.text = value.toString();
+                            },
+                            // decoration: const InputDecoration(
+                            //   border: OutlineInputBorder(),
+                            //   labelText: 'duree',
+                            //   hintText: 'Entrer la duree',
+                            // )
+                            // ),
+
+                            decoration: InputDecoration(
+                              labelText: project.dateDedut.toString(),
+                              //  hintText: 'Entrer la date',
+                              labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.white,
+                              ),
+                            )),
+                        TextFormField(
+                            // keyboardType: TextInputType.number,
+                            readOnly: true,
+                            controller: _dat2Controller,
+                            onTap: _handleDateFinPicker,
+                            // The validator receives the text that the user has entered.
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                _dat2Controller.text =
+                                    project.dateFin.toString();
+                              } else
+                                _dat2Controller.text = value.toString();
+                            },
+                            // decoration: const InputDecoration(
+                            //   border: OutlineInputBorder(),
+                            //   labelText: 'duree',
+                            //   hintText: 'Entrer la duree',
+                            // )
+                            // ),
+
+                            decoration: InputDecoration(
+                              labelText: project.dateFin.toString(),
+                              //  hintText: 'Entrer la date',
+                              labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.white,
+                              ),
+                            )),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Validate returns true if the form is valid, or false otherwise.
+                              if (_formKey.currentState!.validate()) {
+                                //  Tache t = Tache(duree: duree, titre: titre);
+                                if (DateTime.parse(_dat2Controller.text)
+                                    .isAfter(
+                                        DateTime.parse(_dat1Controller.text))) {
+                                  ProjectDao.UpdateProject(
+                                      Auth.uid,
+                                      project.id,
+                                      Project(
+                                          dateDedut: DateTime.parse(
+                                              _dat1Controller.text),
+                                          dateFin: DateTime.parse(
+                                              _dat2Controller.text),
+                                          titre: _title));
+                                  // TacheDao.SaveTache(Auth.uid, , t);
+
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title: Text('Result'),
+                                      content: Text('modification avec succes'),
+                                      actions: [
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text('Ok'))
+                                      ],
+                                    ),
+                                  );
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title: Text('Result'),
+                                      content: Text(
+                                          'date Fin ne peut pas etre avant date debut !!'),
+                                      actions: [
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text('Ok'))
+                                      ],
+                                    ),
+                                  );
+                                }
+                              }
+                            },
+                            child: const Text('Modifier'),
+                          ),
+                        ),
                       ],
                     ),
-                  );
-                }
-              },
-              child: const Text('Modifier'),
-            ),
-          ),
-        ],
-      ),
-    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 }
