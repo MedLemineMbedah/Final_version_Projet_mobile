@@ -66,6 +66,7 @@ class ListRessource extends StatelessWidget {
                                 snapshot.data![index].id);
                             ResourceDao.ResourceAuccupe(
                                 snapshot.data![index].id);
+
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
