@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:projects3/src/daos/user_dao.dart';
 import 'package:projects3/src/models/project.dart';
 import 'package:projects3/src/models/tache.dart';
 import 'package:projects3/src/screens/tache_screen/tache_item_builder.dart';
@@ -145,6 +146,7 @@ class ListTache_of_project extends StatelessWidget {
           value: val,
           onChanged: (v) async{
             TacheDao.changeTermin(Auth.uid,widget.tache.titre);
+            UserDao.changeEtat(Auth.uid);
             setState(() {
               val=v!;
             });

@@ -21,5 +21,14 @@ class UserDao{
    static Future<void> saveUser1(UserMadel user) async{
     await  _usersCollection.add(user.asMap());
   }
+
+  static Future<void> changeEtat(String uid) async {
+    Map<String, dynamic> occupation = {"estOcupper": false};
+    await FirebaseFirestore.instance
+        .collection(UserDao.colName)
+        .doc(uid)
+        .update(occupation);
+  }
+
   
 }
