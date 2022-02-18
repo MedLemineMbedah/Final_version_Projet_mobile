@@ -71,6 +71,10 @@ class MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+            Padding(
+                           padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),    child:
           TextFormField(
 
               // The validator receives the text that the user has entered.
@@ -87,14 +91,19 @@ class MyCustomFormState extends State<MyCustomForm> {
               //   hintText: 'Entrer Title',
               // )),
 
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                 labelText: 'duree',
                 hintText: 'Entrer Title',
                 labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.black54,
+                  color: Colors.black87,
                 ),
-              )),
+                border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+              )
+              ),
+            ),
           TextFormField(
               keyboardType: TextInputType.number,
 

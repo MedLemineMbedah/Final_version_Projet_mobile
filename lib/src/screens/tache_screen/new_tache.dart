@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:projects3/src/daos/tacheDao.dart';
 import 'package:projects3/src/models/tache.dart';
@@ -60,28 +62,16 @@ class AddTache extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    // Center(
-                    //   child: Text(
-                    //     titleText,
-                    //     style: TextStyle(
-                    //       color: Colors.lightBlueAccent.shade200,
-                    //       fontSize: 20.0,
-                    //       fontWeight: FontWeight.bold,
-                    //     ),
-                    //   ),
-                    // ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-
+              
                   Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+       // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Padding(
+                           padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),    child:
           TextFormField(
 
               // The validator receives the text that the user has entered.
@@ -98,14 +88,24 @@ class AddTache extends StatelessWidget {
               //   hintText: 'Entrer Title',
               // )),
 
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                 labelText: 'nom',
-                hintText: 'Entrer Title',
+                hintText: 'Entrer nom',
                 labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.white,
+                  color: Colors.black87,
                 ),
-              )),
+                 border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+              )
+              ),
+
+              ),
+              Padding(
+                           padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),    child:
           TextFormField(
               keyboardType: TextInputType.number,
 
@@ -124,17 +124,41 @@ class AddTache extends StatelessWidget {
               // )
               // ),
 
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                 labelText: 'duree',
                 hintText: 'Entrer la duree',
                 labelStyle: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.white,
+                  color: Colors.black87,
                 ),
-              )),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: ElevatedButton(
+                 border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+              )),),
+           Container(
+                          margin: EdgeInsets.symmetric(vertical: 20.0),
+                          height: 60.0,
+                   //       width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            borderRadius: BorderRadius.circular(40.0),
+                          ),
+                
+                
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              fixedSize: const Size(300, 100),
+              textStyle: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 20,
+                    ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50)
+                  )
+                  
+                  ),
+                
               onPressed: () {
                 // Validate returns true if the form is valid, or false otherwise.
                 if (_formKey.currentState!.validate()) {
@@ -156,9 +180,20 @@ class AddTache extends StatelessWidget {
                       ],
                     ),
                   );
+                
                 }
-              },
-              child: const Text('Ajouter'),
+                
+              
+                },
+                 child: Text(
+                                btnText.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+              
             ),
           ),
         ],

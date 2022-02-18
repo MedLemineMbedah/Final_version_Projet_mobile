@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projects3/src/daos/auth.dart';
 import 'package:projects3/src/daos/resourceDao.dart';
 import 'package:projects3/src/daos/tacheDao.dart';
+import 'package:projects3/src/daos/user_dao.dart';
 import 'package:projects3/src/models/resource.dart';
 import 'package:projects3/src/models/tache.dart';
 import 'package:projects3/src/screens/UserScreen/AddUser.dart';
@@ -87,14 +88,15 @@ class ListRessource extends StatelessWidget {
                           },
                         ),
                         onDismissed: (direction) {
-                          // if (direction == DismissDirection.startToEnd) {
+                           if (direction == DismissDirection.startToEnd) {
                           // //  print(project.id);
-                          // } else if (direction == DismissDirection.endToStart) {
+                           } else if (direction == DismissDirection.endToStart) {
                           //   //Scaffold.of(context).showSnackBar(SnackBar(content: Text("Swipe to right")));
                           //   // print(project.id);
                           //   // print("supprimer");
                           //   // ProjectDao.deleteP(project.id, Auth.uid);
-                          // }
+                                UserDao.deleteUser(snapshot.data![index].id);
+                           }
                         },
                         confirmDismiss: (direction) async {
                           if (direction == DismissDirection.endToStart) {
@@ -121,7 +123,7 @@ class ListRessource extends StatelessWidget {
                           } else {
                             onTap:
                             {
-                              //ontap(project: project, selectedScreen: UpdateResorce.screenName);
+                             // ontap(project: project, selectedScreen: UpdateResorce.screenName);
                             }
                           }
                         },

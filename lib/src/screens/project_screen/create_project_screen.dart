@@ -109,28 +109,15 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  // Center(
-                  //   child: Text(
-                  //     titleText,
-                  //     style: TextStyle(
-                  //       color: Colors.lightBlueAccent.shade200,
-                  //       fontSize: 20.0,
-                  //       fontWeight: FontWeight.bold,
-                  //     ),
-                  //   ),
-                  // ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
+                 
                   Form(
                     key: _formKey,
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                           padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),
                           child: TextFormField(
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -146,7 +133,14 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                               fontSize: 18.0,
                             ),
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(),
+                              labelStyle: TextStyle(
+                    
+                  fontSize: 18.0,
+                  color: Colors.black87,
+                ),
+                 border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
                               labelText: 'Nom',
                               hintText: 'Entrer votre nom',
                               // hintText: 'Nom'
@@ -173,10 +167,11 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                               fontSize: 18.0,
                             ),
                             decoration: InputDecoration(
+                              
                               labelText: 'DateDebut',
                               labelStyle: TextStyle(
                                 fontSize: 18.0,
-                                color: Colors.white,
+                                color: Colors.black87,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -206,7 +201,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                               labelText: 'DateFin',
                               labelStyle: TextStyle(
                                 fontSize: 18.0,
-                                color: Colors.white,
+                                color: Colors.black87,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -217,12 +212,24 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 20.0),
                           height: 60.0,
-                          width: double.infinity,
+                   //       width: double.infinity,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.circular(40.0),
                           ),
                           child: ElevatedButton(
+                           style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              fixedSize: const Size(300, 100),
+              textStyle: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 20,
+                    ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50)
+                  )
+                  
+                  ),
                             onPressed: () async {
                               if (_dat2.isAfter(_dat1)) {
                                 // if (_formKey.currentState!.validate()) {
